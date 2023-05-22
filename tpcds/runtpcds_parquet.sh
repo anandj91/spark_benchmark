@@ -1,11 +1,8 @@
-../spark3/bin/spark-shell \
+$SPARK_HOME/bin/spark-shell \
        	    --jars ../spark-sql-perf/target/scala-2.12/spark-sql-perf_2.12-0.5.1-SNAPSHOT.jar \
-	    --packages io.delta:delta-core_2.12:1.1.0 \
-	    --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" \
-	    --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" \
-            --master local[*] \
+            --master yarn \
             --deploy-mode client \
-	    --executor-memory 4G \
-	    --num-executors 4 \
- 	    --executor-cores 2 \
+	    --executor-memory 10G \
+	    --num-executors 8 \
+ 	    --executor-cores 4 \
             -i ./TPCDS_99_parquet_Queries.scala
